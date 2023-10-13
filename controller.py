@@ -1,4 +1,5 @@
-from model import *
+from model import*
+from Dao import*
 
 class ControllerAdicionarTarefa():
     def __init__(self, tarefa):
@@ -15,14 +16,13 @@ class ControllerExcluirTarefa():
         try:
             excluir = int(excluir) - 1
             if excluir < 0:
-                raise  ("Digite um número inteiro positivo para excluir a tarefa")
+                raise ValueError("Digite um número inteiro positivo para excluir a tarefa")
             if excluir >= len(todo.lista):
-                raise ("Número de tarefa a excluir fora do alcance")
+                raise ValueError("Número de tarefa a excluir fora do alcance")
             todo.removeTarefa(excluir)
             print("Tarefa excluída com sucesso")
         except Exception as erro:
             print(f"Erro ao excluir tarefa: {erro}")
-
 
 class ControllerListarTarefa():
     def __init__(self):
@@ -32,8 +32,8 @@ class ControllerListarTarefa():
                 print("Nenhuma tarefa encontrada.")
             else:
                 cont = 1
-                for tarefa in ControllerLista:
-                    print(f"{cont} -- {tarefa}")
+                for i in ControllerLista:
+                    print(f'[{cont}º] - {i}')
                     cont += 1
         except Exception as erro:
             print(f"Erro: {erro}")
@@ -41,10 +41,8 @@ class ControllerListarTarefa():
 todo = ToDO()
 
 def obter_opcao():
-        opcao = input("Digite a opção desejada: ")
-        if opcao.isdigit():
-            return int(opcao)
-        else:
-            print("Por favor, digite um número inteiro válido.")
-
-
+    opcao = input("Digite a opção desejada: ")
+    if opcao.isdigit():
+        return int(opcao)
+    else:
+        print("Por favor, digite um número inteiro válido.")
