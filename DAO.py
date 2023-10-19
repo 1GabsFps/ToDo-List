@@ -1,48 +1,13 @@
-from controller import*
-
-class ToDO:
-    def __init__(self, arquivo="To-do.txt"):
-        self.arquivo = arquivo
-        self.lista = []
-        self.loadTarefas()
-
-    def addTarefa(self, tarefa):
-        try:
-            with open(self.arquivo, "a") as file:
-                file.write(f"{len(self.lista) + 1};{tarefa}\n")
-            self.loadTarefas()
-            return True
-        except Exception as e:
-            print(f"Erro ao adicionar tarefa: {e}")
-            return False
+def adicionar_tarefa(tarefa):
+    with open("To-do.txt", "r") as arquivo:
+        tarefas = arquivo.readlines()
+        indice = len(tarefas)
+    with open("To-do.txt", "a") as arquivo:
+        arquivo.write(f"\n {indice}    {tarefa}\n")
 
 
-
-    def listarTarefa(self):
-        return self.lista
-
-    def loadTarefas(self):
-        try:
-            with open(self.arquivo, "r") as file:
-                self.lista = [linha.strip().split(';')[1] for linha in file.readlines()]
-        except FileNotFoundError:
-            open(self.arquivo, "w").close()
-    
-    def removeTarefa(self, index):
-        try:
-            with open(self.arquivo, "r") as file:
-                tarefas = file.readlines()
-
-            if 0 <= index < len(tarefas):
-                del tarefas[index]
-                
-                with open(self.arquivo, "w") as file:
-                    file.writelines(tarefas)
-                
-                self.loadTarefas()
-                return True
-            else:
-                raise ValueError("Número de tarefa a excluir fora do alcance")
-        except Exception as e:
-            print(f"Erro ao excluir tarefa: {e}")
-            return False
+def listar_tarefas():
+    with open("To-do.txt", "r") as arquivo:
+        tarefas = arquivo.readlines()
+        for tarefa in tarefas:
+            print(tarefa.strip())
