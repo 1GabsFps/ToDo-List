@@ -1,18 +1,19 @@
 import random
-import re
 
 
 def adicionar_tarefa(tarefa):
     with open("To-do.txt", "r") as arquivo:
         tarefas = arquivo.readlines()
-        indice = len(tarefas)
-        listaid = []
         id = random.randint(1000, 9999)
-        if id in tarefas:
+        listaids = []
+        while id in tarefas:
             id = random.randint(1000, 9999)
+        if id not in listaids:
+            listaids.append(id)
         else:
-            with open("To-do.txt", "a") as arquivo:
-                arquivo.write(f"\n {id}    {tarefa}")
+            pass
+        with open("To-do.txt", "a") as arquivo:
+            arquivo.write(f"\n {id}    {tarefa}")
 
 
 def listar_tarefas():
@@ -31,5 +32,29 @@ def listar_tarefas():
                 print(item.strip())
                 index += 1
             else:
-                print(index, item.strip())
+                print(index - 1, "   ", item.strip())
             index += 1
+    return tarefas
+
+
+def excluir_tarefas(tarefa):
+    with open("To-do.txt", "r") as arquivo:
+        tarefas = arquivo.readlines()
+        tarefas.pop(tarefa)
+        index = 0
+        listaids = []
+        for ids in tarefas:
+            item_id = ""
+            for caractere in ids:
+                if caractere.isdigit():
+                    item_id += caractere
+        listaids.append(item_id)
+        print(listaids)
+        with open("To-do.txt", "w") as arquivo:
+            for item in tarefas:
+                if index == 0:
+                    arquivo.write(item)
+                    index += 1
+                else:
+                    arquivo.write(listaids.index(index), item)
+                    index += 1

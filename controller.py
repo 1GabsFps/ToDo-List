@@ -1,42 +1,37 @@
 from model import *
+from DAO import *
 
 
 class ControllerAdicionarTarefa:
     def __init__(self, tarefa):
         self.tarefa = tarefa
-        try:
-            todo.addTarefa(self.tarefa)
-            print("Tarefa adicionada com sucesso")
-        except Exception as e:
-            print(f"Erro ao adicionar tarefa: {e}")
-        print("")
+        if len(self.tarefa) == 0:
+            print("Digite uma tarefa válida")
+        else:
+            try:
+                adicionar_tarefa(self.tarefa)
+                print("Tarefa adicionada com sucesso")
+            except Exception as e:
+                print(f"Erro ao adicionar tarefa: {e}")
+            print("")
 
 
 class ControllerExcluirTarefa:
     def __init__(self, excluir):
-        try:
-            excluir = int(excluir)
-            if excluir < 0:
-                raise ("Digite um número inteiro positivo para excluir a tarefa")
-            if excluir >= len(todo.lista):
-                raise ("Número de tarefa a excluir fora do alcance")
-            todo.removeTarefa(excluir)
+        excluir = int(excluir)
+        if excluir < 0:
+            print("Digite um número inteiro positivo para excluir a tarefa")
+        elif excluir >= len(listar_tarefas()):
+            print("Número de tarefa a excluir fora do alcance")
+        else:
+            excluir_tarefas(excluir)
             print("Tarefa excluída com sucesso")
-        except Exception as erro:
-            print(f"Erro ao excluir tarefa: {erro}")
 
 
 class ControllerListarTarefa:
     def __init__(self):
         try:
-            ControllerLista = todo.listarTarefa()
-            if not ControllerLista:
-                print("Nenhuma tarefa encontrada.")
-            else:
-                cont = 1
-                for tarefa in ControllerLista:
-                    print(f"{cont} -- {tarefa}")
-                    cont += 1
+            listar_tarefas()
         except Exception as erro:
             print(f"Erro: {erro}")
 

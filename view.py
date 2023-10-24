@@ -1,7 +1,8 @@
 from controller import *
 from model import *
 from DAO import *
-sair=True
+
+sair = True
 
 while sair == True:
     print("Software de gerenciamento de tarefas")
@@ -10,24 +11,23 @@ while sair == True:
     print("3 -> Listar tarefas")
     print("4 -> Sair")
     print("")
-    
+
     opcao = obter_opcao()
 
     match opcao:
         case 1:
             limpar()
             tarefa = input("Digite a tarefa: ")
-            adicionartarefa=ControllerAdicionarTarefa(tarefa)
-            adicionar_tarefa(tarefa)
+            adicionartarefa = ControllerAdicionarTarefa(tarefa)
             parar()
             limpar()
 
         case 2:
             limpar()
-            listarTarefa=ControllerListarTarefa()
-            excluir = (input("Digite o número da tarefa que deseja excluir: "))
-            excluirTarefa=ControllerExcluirTarefa(excluir)
-            listarTarefa=ControllerListarTarefa()
+            listarTarefa = ControllerListarTarefa()
+            excluir = input("Digite o número da tarefa que deseja excluir: ")
+            excluirTarefa = ControllerExcluirTarefa(excluir)
+            listarTarefa = ControllerListarTarefa()
             parar()
             limpar()
         case 3:
@@ -40,14 +40,11 @@ while sair == True:
             limpar()
 
         case 4:
-            sair=False
+            sair = False
 
-        
-    
         case _:
             limpar()
             print("Opção inválida")
             print("")
             parar()
             limpar()
-
