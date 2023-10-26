@@ -79,7 +79,9 @@ def alterar_tarefa(tarefa):
                 status_tarefa = item[0]
                 tarefas.pop(index)
                 nova_tarefa = input("Digite a nova tarefa: ")
-                tarefas.insert(index, f"{status_tarefa}\t{id_tarefa}\t{nova_tarefa}\n")
+                tarefas.insert(
+                    index, f"{status_tarefa}        {id_tarefa}    {nova_tarefa}\n"
+                )
             index += 1
     with open("To-do.txt", "w") as arquivo:
         for item in tarefas:
