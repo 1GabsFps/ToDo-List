@@ -30,6 +30,7 @@ def listar_tarefas():
                 print("ID   STATUS  TAREFA")
             elif item.startswith("A"):
                 print(f"{index}     {item.strip()}")
+    return tarefas
 
 
 def excluir_tarefas(tarefa):

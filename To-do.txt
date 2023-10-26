@@ -1,4 +1,5 @@
 Status  ID      TAREFA
-C        7704    macaco
-A        4269    xd
-C        6316    xdddddd
+C        7704    xddd
+C        4269    xd
+C        6316    xddddd
+E        5492    xisde
