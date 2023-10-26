@@ -38,6 +38,34 @@ class ControllerListarTarefa:
             print(f"Erro: {erro}")
 
 
+class ControllerConcluirTarefa:
+    def __init__(self, tarefa):
+        tarefa = int(tarefa)
+        concluir_tarefa(tarefa)
+
+
+class ControllerAlterarTarefa:
+    def __init__(self, alterar):
+        alterar = int(alterar)
+        if alterar <= 0:
+            print(
+                "Digite um número inteiro positivo maior que zero para alterar uma tarefa"
+            )
+        elif alterar >= len(listar_tarefas()):
+            print("Número de tarefa a alterar fora do alcance")
+        else:
+            try:
+                alterar_tarefa(alterar)
+            except Exception as erro:
+                print(f"Erro: {erro}")
+            print("Tarefa alterada com sucesso")
+
+
+class ControllerListaConcluidos:
+    def __init__(self):
+        listar_tarefas_concluidas()
+
+
 todo = ToDO()
 
 

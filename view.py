@@ -1,16 +1,12 @@
 from controller import *
-from model import *
-from DAO import *
 
 sair = True
 
 while sair == True:
-    print("Software de gerenciamento de tarefas")
-    print("1 -> Adicionar tarefa")
-    print("2 -> Excluir tarefa")
-    print("3 -> Listar tarefas")
-    print("4 -> Sair")
-    print("")
+    print("SOFTWARE DE GERENCIAMENTO DE TAREFAS")
+    print(
+        " [1] -> Adicionar tarefa\n [2] -> Listar tarefas\n [3] -> Alterar tarefas\n [4] -> Concluir Tarefa\n [5] -> Listar tarefas concluidas\n [6] -> Excluir tarefa\n [7] -> Sair\n"
+    )
 
     opcao = obter_opcao()
 
@@ -24,25 +20,51 @@ while sair == True:
 
         case 2:
             limpar()
-            listarTarefa = ControllerListarTarefa()
-            excluir = input("Digite o número da tarefa que deseja excluir: ")
-            excluirTarefa = ControllerExcluirTarefa(excluir)
-            limpar()
-            listarTarefa = ControllerListarTarefa()
-            parar()
-            limpar()
-        case 3:
-            limpar()
-            print("Conteúdo do arquivo To-do.txt")
+            print("--| Lista de Tarefas do arquivo To-do.txt|-- ")
             print("")
             listar_tarefas()
             print("")
             parar()
             limpar()
-
+        case 3:
+            limpar()
+            print("--| Lista de Tarefas do arquivo To-do.txt|-- ")
+            listarTarefa = ControllerListarTarefa()
+            alterar = input("\nDigite o número da tarefa que deseja alterar: ")
+            alterarTarefa = ControllerAlterarTarefa(alterar)
+            parar()
+            limpar()
         case 4:
-            sair = False
+            limpar()
+            print("--| Lista de Tarefas do arquivo To-do.txt|-- ")
+            listarTarefa = ControllerListarTarefa()
+            concluir = input("\nDigite o Id da tarefa que quer concluir: ")
+            limpar()
+            ConcluirTarefa = ControllerConcluirTarefa(concluir)
+            listarTarefa = ControllerListarTarefa()
+            parar()
+            limpar()
+        case 5:
+            limpar()
+            ListarTarefasConcluidas = ControllerListaConcluidos()
+            parar()
 
+        case 6:
+            limpar()
+            print("--| Lista de Tarefas do arquivo To-do.txt|-- ")
+            listarTarefa = ControllerListarTarefa()
+            excluir = input("Digite o número da tarefa que deseja excluir: ")
+            excluirTarefa = ControllerExcluirTarefa(excluir)
+            limpar()
+            print("--| Nova Lista de Tarefas |--")
+            listarTarefa = ControllerListarTarefa()
+            parar()
+            limpar()
+        case 7:
+            limpar()
+            print("Saindo...")
+            parar()
+            sair = False
         case _:
             limpar()
             print("Opção inválida")

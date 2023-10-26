@@ -1,3 +1,4 @@
-ID      TAREFA
-7704    xddd
-6316    xddddddddd
+Status  ID      TAREFA
+C        7704    macaco
+A        4269    xd
+C        6316    xdddddd
