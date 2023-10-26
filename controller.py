@@ -18,16 +18,19 @@ class ControllerAdicionarTarefa:
 
 class ControllerExcluirTarefa:
     def __init__(self, excluir):
-        excluir = int(excluir)
-        if excluir <= 0:
-            print(
-                "Digite um número inteiro positivo maior que zero para excluir uma tarefa"
-            )
-        elif excluir >= len(listar_tarefas()):
-            print("Número de tarefa a excluir fora do alcance")
-        else:
-            excluir_tarefas(excluir)
-            print("Tarefa excluída com sucesso")
+        try:
+            excluir = int(excluir)
+            if excluir <= 0:
+                print(
+                    "Digite um número inteiro positivo maior que zero para excluir uma tarefa"
+                )
+            elif excluir >= len(listar_tarefas()):
+                print("Número de tarefa a excluir fora do alcance")
+            else:
+                excluir_tarefas(excluir)
+                print("Tarefa excluída com sucesso")
+        except Exception as e:
+            print(f"Ops! Ocorreu um erro {e}")
 
 
 class ControllerListarTarefa:
@@ -46,24 +49,30 @@ class ControllerConcluirTarefa:
 
 class ControllerAlterarTarefa:
     def __init__(self, alterar):
-        alterar = int(alterar)
-        if alterar <= 0:
-            print(
-                "Digite um número inteiro positivo maior que zero para alterar uma tarefa"
-            )
-        elif alterar >= len(listar_tarefas()):
-            print("Número de tarefa a alterar fora do alcance")
-        else:
-            try:
-                alterar_tarefa(alterar)
-            except Exception as erro:
-                print(f"Erro: {erro}")
-            print("Tarefa alterada com sucesso")
+        try:
+            alterar = int(alterar)
+            if alterar <= 0:
+                print(
+                    "Digite um número inteiro positivo maior que zero para alterar uma tarefa"
+                )
+            elif alterar >= len(listar_tarefas()):
+                print("Número de tarefa a alterar fora do alcance")
+            else:
+                try:
+                    alterar_tarefa(alterar)
+                except Exception as erro:
+                    print(f"Erro: {erro}")
+                print("Tarefa alterada com sucesso")
+        except Exception as e:
+            print(f"Ops! Ocorreu um erro {e}")
 
 
 class ControllerListaConcluidos:
     def __init__(self):
-        listar_tarefas_concluidas()
+        try:
+            listar_tarefas_concluidas()
+        except Exception as e:
+            print(f"Ops! Ocorreu um erro {e}")
 
 
 todo = ToDO()
