@@ -48,13 +48,12 @@ def excluir_tarefas(tarefa):
             for caractere in ids:
                 if caractere.isdigit():
                     item_id += caractere
-        listaids.append(item_id)
-        print(listaids)
+            listaids.append(item_id)
         with open("To-do.txt", "w") as arquivo:
             for item in tarefas:
                 if index == 0:
-                    arquivo.write(item)
+                    arquivo.write(f"{item}")
                     index += 1
                 else:
-                    arquivo.write(listaids.index(index), item)
+                    arquivo.write(f"{item}")
                     index += 1

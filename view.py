@@ -27,6 +27,7 @@ while sair == True:
             listarTarefa = ControllerListarTarefa()
             excluir = input("Digite o número da tarefa que deseja excluir: ")
             excluirTarefa = ControllerExcluirTarefa(excluir)
+            limpar()
             listarTarefa = ControllerListarTarefa()
             parar()
             limpar()

@@ -19,8 +19,10 @@ class ControllerAdicionarTarefa:
 class ControllerExcluirTarefa:
     def __init__(self, excluir):
         excluir = int(excluir)
-        if excluir < 0:
-            print("Digite um número inteiro positivo para excluir a tarefa")
+        if excluir <= 0:
+            print(
+                "Digite um número inteiro positivo maior que zero para excluir uma tarefa"
+            )
         elif excluir >= len(listar_tarefas()):
             print("Número de tarefa a excluir fora do alcance")
         else:
