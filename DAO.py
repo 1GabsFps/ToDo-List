@@ -51,9 +51,5 @@ def excluir_tarefas(tarefa):
             listaids.append(item_id)
         with open("To-do.txt", "w") as arquivo:
             for item in tarefas:
-                if index == 0:
-                    arquivo.write(f"{item}")
-                    index += 1
-                else:
-                    arquivo.write(f"{item}")
-                    index += 1
+                arquivo.write(f"{item}")
+                index += 1
